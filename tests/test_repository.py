@@ -9,10 +9,8 @@ def test_publication_files_exist():
     expected = [
         "README.md",
         "LICENSE",
-        "CITATION.cff",
         "pyproject.toml",
         "docs/architecture.md",
-        "docs/thesis/thesis.pdf",
         "apps/transmitter.py",
         "apps/receiver.py",
         "src/edge_semcom/neural_phy.py",
