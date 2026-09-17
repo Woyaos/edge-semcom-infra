@@ -1,12 +1,12 @@
 # EdgeSemCom Infra：端侧语义通信基础设施
 
 [English](README.md) · [架构说明](docs/architecture.md) ·
-[复现实验](docs/reproduction.md) · [毕业论文 PDF](docs/thesis/thesis.pdf)
+[复现实验](docs/reproduction.md) · [实验结果](docs/results.md)
 
-这是一个从毕业设计研究工作区整理出的可公开仓库，主线是把图像语义通信从
-“模型能运行”推进到“能在 Jetson Orin 上优化部署，并经过 USRP X310 真实空口
-验证”。仓库只保留可解释的核心代码、少量代表性结果与论文，不包含重复迭代稿、
-缓存、超大权重、设备相关 TensorRT 引擎或原始视频。
+这是一个面向工程复现的端侧语义通信仓库，主线是把图像语义通信从“模型能运行”
+推进到“能在 Jetson Orin 上优化部署，并经过 USRP X310 真实空口验证”。仓库只
+保留可解释的核心代码、少量代表性结果与工程文档，不包含论文、重复迭代稿、缓存、
+超大权重、设备相关 TensorRT 引擎或原始视频。
 
 ![系统架构](assets/system-architecture.png)
 
@@ -58,6 +58,6 @@ python evaluation/compare_phy_layers.py \
 功能必须在真实硬件和厂商运行时上验证。模型权重、TensorRT 引擎、原始采集数据
 和视频不进入 Git，详见 [模型与数据说明](docs/models-and-data.md)。
 
-代码采用 [MIT License](LICENSE)。引用论文或复用论文图表时，请保留作者归属并
-使用 [CITATION.cff](CITATION.cff) 中的引用信息。
+代码采用 [MIT License](LICENSE)。复用实验图表时请保留作者归属；第三方框架与
+硬件 SDK 仍遵循各自许可证。
 
