@@ -10,12 +10,12 @@
 [![SDR](https://img.shields.io/badge/SDR-USRP%20X310-005F9E.svg)](https://www.ettus.com/all-products/x310-kit/)
 
 [中文说明](README.zh-CN.md) · [Architecture](docs/architecture.md) ·
-[Reproduction](docs/reproduction.md) · [Thesis (PDF)](docs/thesis/thesis.pdf)
+[Reproduction](docs/reproduction.md) · [Results](docs/results.md)
 
-EdgeSemCom Infra is the cleaned research release of an undergraduate thesis
-project. Its primary contribution is not another isolated neural codec: it is
-the engineering path that takes learned semantic and physical-layer components
-from simulation to an edge device and a real radio link.
+EdgeSemCom Infra is an engineering-focused research stack. Its primary
+contribution is not another isolated neural codec: it is the deployment path
+that takes learned semantic and physical-layer components from simulation to an
+edge device and a real radio link.
 
 ![System architecture](assets/system-architecture.png)
 
@@ -32,13 +32,14 @@ from simulation to an edge device and a real radio link.
   iterative MMSE equalization, and learnable residual correction.
 - **Cross-tool deployment:** constellation export for Python/MATLAB and a
   minimal MATLAB lookup modulator/demodulator.
-- **Evidence:** selected machine-readable measurements, figures, and the full
-  thesis. Large checkpoints and device-specific TensorRT engines are excluded.
+- **Evidence:** selected machine-readable measurements and figures. Large
+  checkpoints and device-specific TensorRT engines are excluded.
 
 ## Results at a glance
 
-Measurements below are reported from the archived thesis experiments; they are
-hardware- and configuration-dependent, not universal performance claims.
+Measurements below are reported from the archived engineering experiments;
+they are hardware- and configuration-dependent, not universal performance
+claims.
 
 | Measurement | Baseline | Optimized / observed | Change |
 |---|---:|---:|---:|
@@ -64,7 +65,7 @@ tools/                checkpoint/ONNX/constellation export utilities
 matlab/               learned-constellation bridge for SDR experiments
 results/              small, machine-readable reference measurements
 assets/               selected architecture and evaluation figures
-docs/                 architecture, reproduction notes, model policy, thesis
+docs/                 architecture, reproduction notes, model and result policy
 tests/                 dependency-light repository integrity checks
 ```
 
@@ -142,14 +143,9 @@ The simulation and repository-integrity paths are suitable for CI; USRP and
 Jetson paths require the corresponding hardware and vendor runtime. The code is
 not a production radio stack and must not be used for safety-critical links.
 
-## Citation
-
-If this repository helps your work, cite the thesis using [CITATION.cff](CITATION.cff).
-
 ## License
 
 Code in this curated release is available under the [MIT License](LICENSE).
-The thesis PDF and result figures remain scholarly works by their author; cite
-them when reused. Third-party frameworks and hardware SDKs retain their own
-licenses.
+Result figures remain works by their author; preserve attribution when reusing
+them. Third-party frameworks and hardware SDKs retain their own licenses.
 
