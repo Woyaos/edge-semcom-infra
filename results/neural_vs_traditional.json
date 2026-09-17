@@ -1,0 +1,71 @@
+{
+  "checkpoint": "neural_modem_checkpoints_v2/ckpt-0",
+  "config": {
+    "batch_size": 32,
+    "eval_batches": 30,
+    "latency_batches": 50,
+    "num_bits_per_symbol": 6,
+    "coderate": 0.5,
+    "n": 15000,
+    "k": 7500
+  },
+  "ebno_db": [
+    4.0,
+    5.0,
+    6.0
+  ],
+  "traditional": {
+    "ber": [
+      0.1779161810874939,
+      0.15698486069838205,
+      0.13732270896434784
+    ],
+    "latency_ms_per_batch": [
+      64.86378106001212,
+      66.76508955999452,
+      64.71003514001495
+    ],
+    "latency_ms_per_codeword": [
+      2.0269931581253786,
+      2.086409048749829,
+      2.0221885981254673
+    ]
+  },
+  "neural": {
+    "ber": [
+      0.17973694503307341,
+      0.15956770728031794,
+      0.1400251398483912
+    ],
+    "latency_ms_per_batch": [
+      39.09392367999317,
+      39.53541814000346,
+      39.33648986001572
+    ],
+    "latency_ms_per_codeword": [
+      1.2216851149997865,
+      1.235481816875108,
+      1.2292653081254912
+    ]
+  },
+  "gain": {
+    "ber_ratio_neural_over_traditional": [
+      1.0102338299667308,
+      1.0164528386396339,
+      1.0196794172240295
+    ],
+    "latency_ratio_neural_over_traditional": [
+      0.6027080605095065,
+      0.5921570449550176,
+      0.6078885566188031
+    ]
+  },
+  "summary": {
+    "avg_ber_traditional": 0.15740791691674128,
+    "avg_ber_neural": 0.15977659738726085,
+    "avg_ber_ratio_neural_over_traditional": 1.0150480389863266,
+    "avg_latency_ms_per_batch_traditional": 65.4463019200072,
+    "avg_latency_ms_per_batch_neural": 39.32194389333745,
+    "avg_latency_ratio_neural_over_traditional": 0.600827590555068
+  }
+}

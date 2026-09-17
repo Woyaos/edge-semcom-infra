@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software or its experimental material, please cite it as below."
+title: "EdgeSemCom Infra: Edge-Deployed Image Semantic Communication over a Real Radio Link"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Xishuo
+version: 0.1.0
+date-released: 2026-09-17
+license: MIT
+keywords:
+  - semantic communication
+  - edge AI
+  - neural physical layer
+  - Jetson Orin
+  - USRP X310
+

@@ -1,0 +1,37 @@
+{
+  "config": {
+    "batch_size": 4,
+    "pilot_len": 16,
+    "data_len": 64,
+    "snr_db": 8.0,
+    "input_npz": "",
+    "residual_ckpt_dir": "",
+    "residual_ckpt_path": ""
+  },
+  "results": {
+    "raw": {
+      "ber": 0.279296875,
+      "evm": 0.9437059760093689,
+      "latency_ms": 0.0,
+      "latency_p95_ms": 0.0
+    },
+    "pilot_sync": {
+      "ber": 0.236328125,
+      "evm": 0.8235616683959961,
+      "latency_ms": 32.774925231933594,
+      "latency_p95_ms": 32.774925231933594
+    },
+    "lmmse_dft_iter2": {
+      "ber": 0.220703125,
+      "evm": 0.802828311920166,
+      "latency_ms": 342.4973487854004,
+      "latency_p95_ms": 342.4973487854004
+    },
+    "residual_untrained": {
+      "ber": 0.359375,
+      "evm": 1.4753739833831787,
+      "latency_ms": 342.9412841796875,
+      "latency_p95_ms": 342.9412841796875
+    }
+  }
+}
