@@ -75,7 +75,7 @@ The software has two profiles. Start with simulation; use the Jetson profile
 only on a compatible NVIDIA JetPack system.
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/Woyaos/edge-semcom-infra.git
 cd edge-semcom-infra
 python -m venv .venv
 source .venv/bin/activate
@@ -138,10 +138,11 @@ external model registry should be used for distributable artifacts.
 
 ## Project status
 
-This is a research prototype released for reproducibility and portfolio use.
-The simulation and repository-integrity paths are suitable for CI; USRP and
-Jetson paths require the corresponding hardware and vendor runtime. The code is
-not a production radio stack and must not be used for safety-critical links.
+The repository provides reproducible simulation and CI checks alongside
+hardware-dependent Jetson and USRP workflows. Deploying those workflows
+requires the corresponding devices, vendor runtimes, and experiment-specific
+model artifacts. The stack is intended for research and engineering evaluation,
+not safety-critical communications.
 
 ## License
 
