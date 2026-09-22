@@ -12,10 +12,10 @@
 [中文说明](README.zh-CN.md) · [Architecture](docs/architecture.md) ·
 [Reproduction](docs/reproduction.md) · [Results](docs/results.md)
 
-EdgeSemCom Infra is an engineering-focused research stack. Its primary
-contribution is not another isolated neural codec: it is the deployment path
-that takes learned semantic and physical-layer components from simulation to an
-edge device and a real radio link.
+EdgeSemCom Infra connects semantic representation learning, edge inference,
+and software-defined radio in one end-to-end image communication system. The
+implementation covers the path from model export and Jetson runtime optimization
+to baseband processing and USRP over-the-air evaluation.
 
 ![System architecture](assets/system-architecture.png)
 
@@ -32,14 +32,13 @@ edge device and a real radio link.
   iterative MMSE equalization, and learnable residual correction.
 - **Cross-tool deployment:** constellation export for Python/MATLAB and a
   minimal MATLAB lookup modulator/demodulator.
-- **Evidence:** selected machine-readable measurements and figures. Large
-  checkpoints and device-specific TensorRT engines are excluded.
 
 ## Results at a glance
 
-Measurements below are reported from the archived engineering experiments;
-they are hardware- and configuration-dependent, not universal performance
-claims.
+Selected measurements from the Jetson Orin deployment and USRP X310
+over-the-air experiments are summarized below. The
+[detailed results](docs/results.md) include the stage breakdown and
+experimental setup.
 
 | Measurement | Baseline | Optimized / observed | Change |
 |---|---:|---:|---:|
@@ -48,9 +47,9 @@ claims.
 | RX demodulation + LDPC | 1380.9 ms | 110.0 ms | **-92.03%** |
 | OTA image quality (mean) | — | 28.10 dB PSNR / 0.982 SSIM | — |
 
-The learned 16-QAM experiment also produced clearer received clusters than the
-standard constellation at the tested PA operating points. See
-[results and limitations](docs/results.md) before comparing numbers.
+The learned 16-QAM constellation produced clearer received clusters than
+standard 16-QAM at the evaluated PA operating points. See the
+[detailed results](docs/results.md) for the corresponding figures.
 
 ![Jetson latency comparison](assets/jetson-latency.png)
 
@@ -65,14 +64,14 @@ tools/                checkpoint/ONNX/constellation export utilities
 matlab/               learned-constellation bridge for SDR experiments
 results/              small, machine-readable reference measurements
 assets/               selected architecture and evaluation figures
-docs/                 architecture, reproduction notes, model and result policy
+docs/                 architecture, deployment notes, and detailed results
 tests/                 dependency-light repository integrity checks
 ```
 
 ## Quick start
 
-The software has two profiles. Start with simulation; use the Jetson profile
-only on a compatible NVIDIA JetPack system.
+The simulation profile supports training and component evaluation. The Jetson
+profile covers edge deployment with a compatible JetPack runtime.
 
 ```bash
 git clone https://github.com/Woyaos/edge-semcom-infra.git
@@ -122,31 +121,13 @@ Detailed environment, artifact, and hardware notes are in
    explicit so learned blocks can be replaced and measured independently.
 2. **Optimize the whole runtime path.** Model speedups are evaluated together
    with tensor conversion, baseband processing, transport, and reconstruction.
-3. **Treat OTA as a separate validation tier.** Simulation results are not
-   presented as radio results; raw RF impairments and device configuration are
-   documented as experimental factors.
+3. **Evaluate on the real link.** Pair simulation and component ablations
+   with USRP over-the-air experiments and image-quality measurements.
 4. **Keep artifacts portable.** Learned constellations can be exported into
    MATLAB-friendly data instead of being trapped inside one checkpoint format.
 
-## Model and data policy
-
-Weights, TensorRT engines, camera recordings, and raw RF captures are not stored
-in Git. They are large, hardware-specific, or may carry redistribution/privacy
-constraints. Expected locations and naming are described in
-[docs/models-and-data.md](docs/models-and-data.md). GitHub Releases or an
-external model registry should be used for distributable artifacts.
-
-## Project status
-
-The repository provides reproducible simulation and CI checks alongside
-hardware-dependent Jetson and USRP workflows. Deploying those workflows
-requires the corresponding devices, vendor runtimes, and experiment-specific
-model artifacts. The stack is intended for research and engineering evaluation,
-not safety-critical communications.
-
 ## License
 
-Code in this curated release is available under the [MIT License](LICENSE).
-Result figures remain works by their author; preserve attribution when reusing
-them. Third-party frameworks and hardware SDKs retain their own licenses.
+Code is available under the [MIT License](LICENSE). Third-party frameworks
+and hardware SDKs retain their respective licenses.
 
