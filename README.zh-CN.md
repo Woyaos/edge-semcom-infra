@@ -3,10 +3,9 @@
 [English](README.md) · [架构说明](docs/architecture.md) ·
 [复现实验](docs/reproduction.md) · [实验结果](docs/results.md)
 
-这是一个面向工程复现的端侧语义通信仓库，主线是把图像语义通信从“模型能运行”
-推进到“能在 Jetson Orin 上优化部署，并经过 USRP X310 真实空口验证”。仓库只
-保留可解释的核心代码、少量代表性结果与工程文档，不包含论文、重复迭代稿、缓存、
-超大权重、设备相关 TensorRT 引擎或原始视频。
+EdgeSemCom Infra 将语义表征学习、端侧推理和软件无线电整合为一条端到端图像
+通信链路。从模型导出、Jetson Orin 推理优化，到基带处理和 USRP X310 真实空口
+评估，仓库提供可运行的工程模块、实验入口与结果记录。
 
 ![系统架构](assets/system-architecture.png)
 
@@ -22,7 +21,8 @@
 
 ## 代表性结果
 
-以下数据来自论文归档实验，依赖具体硬件和配置，不应理解为通用性能承诺。
+以下为 Jetson Orin 部署与 USRP X310 空口实验的代表性结果；分阶段数据和实验
+配置见[详细结果](docs/results.md)。
 
 | 指标 | 优化前 | 优化后/观测值 | 变化 |
 |---|---:|---:|---:|
@@ -33,8 +33,8 @@
 
 ## 快速开始
 
-推荐先跑仿真环境；Jetson 部署需使用与 JetPack 匹配的 CUDA、TensorRT、PyTorch
-和 TensorFlow 版本。
+仿真环境用于训练和组件评估；Jetson 部署使用与 JetPack 兼容的 CUDA、
+TensorRT、PyTorch 和 TensorFlow 运行环境。
 
 ```bash
 python -m venv .venv
@@ -49,15 +49,9 @@ python evaluation/compare_phy_layers.py \
   --output_dir results/generated/phy-comparison
 ```
 
-完整环境、模型放置方式、空口实验边界和复现层级请见
-[复现指南](docs/reproduction.md)。
+端侧部署、模型配置和空口实验步骤见[复现指南](docs/reproduction.md)。
 
-## 开源范围
+## 开源许可
 
-本仓库是研究原型。CI 只验证仓库结构、结果数据和 Python 语法；USRP 与 Jetson
-功能必须在真实硬件和厂商运行时上验证。模型权重、TensorRT 引擎、原始采集数据
-和视频不进入 Git，详见 [模型与数据说明](docs/models-and-data.md)。
-
-代码采用 [MIT License](LICENSE)。复用实验图表时请保留作者归属；第三方框架与
-硬件 SDK 仍遵循各自许可证。
+代码采用 [MIT License](LICENSE)；第三方框架与硬件 SDK 遵循各自许可证。
 
